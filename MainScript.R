@@ -42,13 +42,16 @@ VectorSentence = function(x, y){
   #Fill the entry column with the entries.  This section will expand when additional parameters are added
   
   #Create the entries for singleton items (nothing consecutive)
-  elements$entry[which(elements$start == elements$end)] = elements$startValue[which(elements$start == elements$end)]
+  a = which(elements$start == elements$end)
+  elements$entry[a] = elements$startValue[a]
   
   #Create the entries for pairs (two consecutive, so don't use hyphen)
-  elements$entry[which(elements$start == elements$end - 1)] = paste0(elements$startValue[which(elements$start == elements$end - 1)],", ",elements$endValue[which(elements$start == elements$end - 1)])
+  a = which(elements$start == elements$end - 1)
+  elements$entry[a] = paste0(elements$startValue[a],", ",elements$endValue[a])
   
   #Create the hyphenated entries
-  elements$entry[which(is.na(elements$entry))] = paste0(elements$startValue[which(is.na(elements$entry))],"-",elements$endValue[which(is.na(elements$entry))])
+  a = which(is.na(elements$entry))
+  elements$entry[a] = paste0(elements$startValue[a],"-",elements$endValue[a])
   
   
   #Return the comma separated string, completely assembled
