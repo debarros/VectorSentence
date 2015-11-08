@@ -18,7 +18,9 @@
 VectorSentence = function(x, y = NA, OxfordComma = T, End = "and ", hyphenate = 3){
   
   #If y is not supplied, set it to be all true
-  if(is.na(y)){y = rep(T, times = length(x))}
+  if(length(y)==1){
+    if(is.na(y)){y = rep(T, times = length(x))}
+  }
   
   #If the set of elements to be strung together is small, deal with it right away
   if(sum(y) == 0){return(NULL)}
@@ -61,7 +63,9 @@ VectorSentence = function(x, y = NA, OxfordComma = T, End = "and ", hyphenate = 
     } else {Entries[[i]] = paste0(elements$startValue[i],"-",elements$endValue[i])}
   } #end of for loop
   Entries = unlist(Entries) #Convert the Entries list to a character vector
+  
   if(length(Entries) == 1){return(Entries)}  #if there is only one element left, return it
+  if(length(Entries) == 2){return(paste0(Entries[1]," ",End,Entries[2]))}  #if there are only 2 elements left, return them
   
   if(OxfordComma){End = paste0(", ",End)}else{End = paste0(" ",End)} #modify the final words in light of OxfordComma
   
