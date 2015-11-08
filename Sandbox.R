@@ -53,3 +53,15 @@ VectorSentence(x, y, OxfordComma = F, End = "", hyphenate = 3)
 VectorSentence(x, y, OxfordComma = T, End = "", hyphenate = 1)
 
 
+
+
+#Sample Data 3 ####
+x = c("a","b","c","d")
+
+
+#Test Run 3 ####
+VectorSentence(x)
+VectorSentence(x, hyphenate = 5)
+VectorSentence(x, OxfordComma = F, End = "", hyphenate = 1)
+VectorSentence(x, OxfordComma = F, End = "and lastly ", hyphenate = 1)
+VectorSentence(x, OxfordComma = F, End = "and lastly ", hyphenate = 2)
